@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>	// to read from file
-#include <ctime>	
+#include <ctime>
+#include "FileNames.h"
+#include "Switch.h"
 
 using namespace std;
 
@@ -43,6 +45,26 @@ void getDates(int* dates)
 	}
 }
 
+bool readFile(/*const int& port, */const string&  fileName)
+{
+	// Returns true if fileName has port active but not connected.
+	string word;		// Used to read.
+	ifstream file;
+	file.open(fileName);
+	while (file >> word)
+	{
+		if (word == "Type")
+		{
+			break;
+		}
+	}
+	file >> word;
+	cout << word;
+	//
+	file.close();
+	return 0; // TODO: return
+}
+
 int main()
 {
 	// Initiate variables
@@ -60,10 +82,13 @@ int main()
 	// Fill dates array
 	getDates(dates);
 	// test
+	cout << "\n\nFiles to read:\n";
 	for (int i = 0; i < 90; i++)
 	{
 		cout << switchName << ".sh_int_stat." << dates[i] << ".txt" << endl;
 	}
+
+
 
 	return 0;
 }
