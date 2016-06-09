@@ -59,7 +59,7 @@ int main()
 	cout << "\n\nFiles to read:\n";
 	for (int i = 0; i < 90; i++)
 	{
-		cout << PmsSwitch.getName() << ".sh_int_stat." << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << ".txt" << endl;
+		cout << PmsSwitch.getLogs().getList()[i] << endl;
 	}
 
 }

@@ -4,6 +4,7 @@
 
 #include "Dates.h"
 #include <vector>
+#include <string>
 
 class FileNames
 {
@@ -12,6 +13,7 @@ public:
 	FileNames(const std::string& switchName);
 	~FileNames();
 
+	std::vector<std::string> getList();
 	Dates getDates();
 
 private:

@@ -11,6 +11,8 @@ Switch::Switch()
 Switch::Switch(const string& name, const int& port)
 	: name_(name), portWanted_(port)
 {
+	cout << "test";
+	logs_ = FileNames(name_);
 	// logs?
 }
 
