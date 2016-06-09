@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include <fstream>	// to read from file
 #include "FileNames.h"
 #include "Switch.h"
+#include "Reader.h"
 
 using namespace std;
 
@@ -16,26 +16,6 @@ void getSwitchPort(int& port)
 {
 	cout << "\nEnter port to verify: ";
 	cin >> port;
-}
-
-bool readFile(/*const int& port, */const string&  fileName)
-{
-	// Returns true if fileName has port active but not connected.
-	string word;		// Used to read.
-	ifstream file;
-	file.open(fileName);
-	while (file >> word)
-	{
-		if (word == "Type")
-		{
-			break;
-		}
-	}
-	file >> word;
-	cout << word;
-	//
-	file.close();
-	return 0; // TODO: return
 }
 
 int main()
