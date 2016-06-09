@@ -15,6 +15,11 @@ FileNames::FileNames(const std::string& switchName)
 
 FileNames::~FileNames()
 {
-	// Rien à détruire dans ce cas-ci (aucune utilisation de "new").
+	//
+}
+
+Dates FileNames::getDates()
+{
+	return dates_;
 }
 
