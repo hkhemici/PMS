@@ -28,7 +28,7 @@ int main()
 {
 	// Initiate variables
 	bool portUsable = false;
-	cout << "test start.\n\n";
+	cout << "PATCH KING 3000\n\n";
 
 	// Get switch name.
 	string name;
@@ -44,16 +44,29 @@ int main()
 
 	// Create switch object.
 	Switch PmsSwitch(name, number, port);
-	
-	// test log file names generation.
-	cout << "\n\nFiles to read:\n";
+
+	// _______________________________________________________
+	// TEMPORARY, WILL BECOME \\MONITOR02...
+	vector<string> localNames;
 	for (int i = 0; i < 90; i++)
 	{
-		cout << PmsSwitch.getLogs().getList()[i] << endl;
+		localNames.push_back("E:\\Downloads\\RM-SW-52-2016-06-09\\RM-SW-52\\" + PmsSwitch.getLogs().getList()[i]);
 	}
+	// _______________________________________________________
+
 
 	// test Reader class with given switch log file.
 	Reader reader;
-	reader.checkPortInFile("E:\\Downloads\\RM-SW-52-2016-06-09\\RM-SW-52\\RM-SW-52.sh_int_stat.20130123.txt", number, port);
 
+	for (int i = 0; i < 90; i++)
+	{
+		if (reader.checkPortInFile(localNames[i], number, port))
+		{
+			cout << "Port " << port << " is AVAILABLE on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
+		}
+		else
+		{
+			cout << "Port " << port << " is NOT AVAILABLE on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
+		}
+	}
 }

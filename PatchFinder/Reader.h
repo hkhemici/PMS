@@ -15,7 +15,7 @@ public:
 
 	bool verifyPortName(const std::string& portName, const int& switchNumber, const int& port);
 
-	void checkPortInFile(const std::string& fileName, // USE \\ in string for \.
+	bool checkPortInFile(const std::string& fileName, // USE \\ in string for \.
 						const int& switchNumber,
 						const int& port); 
 

@@ -24,7 +24,7 @@ bool Reader::verifyPortName(const string& portName, const int& switchNumber, con
 	// Convert 3rd character to int and check == switchNumber (always the 3rd character)
 	if (portName[2] - '0' == switchNumber) 
 	{
-		// If port is < 10, check the last character of portName is the port.
+		// If port is < 10, check the last 2 characters of portName are "/port".
 		if (port < 10)
 		{
 			if (portName.substr(portName.length() - 2) == "/" + to_string(port))
@@ -36,7 +36,7 @@ bool Reader::verifyPortName(const string& portName, const int& switchNumber, con
 				return false;
 			}
 		}
-		// If port is >= 10, check the last 2 characters of portName are the port.
+		// If port is >= 10, check the last 3 characters of portName are "/port".
 		else
 		{
 			if (portName.substr(portName.length() - 3) == "/" + to_string(port))
@@ -55,7 +55,7 @@ bool Reader::verifyPortName(const string& portName, const int& switchNumber, con
 	}
 }
 
-void Reader::checkPortInFile(const std::string& fileName, const int& switchNumber, const int& port)
+bool Reader::checkPortInFile(const std::string& fileName, const int& switchNumber, const int& port)
 {
 	// Returns true if fileName has port active but not connected.
 	string line;		// Used to read.
@@ -65,12 +65,10 @@ void Reader::checkPortInFile(const std::string& fileName, const int& switchNumbe
 	// Check failure in opening file (ex.: files are not generated on weekends).
 	if (file.fail())
 	{
-		cout << "\nFILE DOES NOT EXIST.\n";
+		cout << "File does not exist.\n";
 	}
 	else
 	{
-		cout << "\n" << fileName << " opened successfully.\n";
-
 		// Read each line.
 		while (getline(file, line))
 		{
@@ -82,15 +80,18 @@ void Reader::checkPortInFile(const std::string& fileName, const int& switchNumbe
 			// Check if portName is the port we are searching.
 			if (verifyPortName(portName, switchNumber, port))
 			{
-				cout << portName << "\t";
+				//cout << portName << "\t";
 				// Look for "notconnect" in the line.
 				size_t found = line.find("notconnect");
 				if (found != string::npos)
 				{
-					// If notconnect, print "available".
-					cout << "-- AVAILABLE --";
+					//cout << "-- AVAILABLE --";
+					return true;
 				}
-				cout << endl;
+				else
+				{
+					return false;
+				}
 			}
 		}
 	}
