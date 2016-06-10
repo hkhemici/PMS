@@ -8,8 +8,8 @@ Switch::Switch()
 	//
 }
 
-Switch::Switch(const string& name, const int& port)
-	: name_(name), portWanted_(port)
+Switch::Switch(const string& name, const int& number, const int& port)
+	: name_(name), number_(number), portWanted_(port)
 {
 	logs_ = FileNames(name_);
 }
@@ -22,6 +22,11 @@ Switch::~Switch()
 string Switch::getName()
 {
 	return name_;
+}
+
+int Switch::getNumber()
+{
+	return number_;
 }
 
 int Switch::getPort()

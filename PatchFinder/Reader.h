@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <iostream> // to test.
+#include <sstream>
 
 class Reader
 {
@@ -12,7 +13,11 @@ public:
 	Reader();
 	~Reader();
 
-	void checkPortInFile(const std::string& fileName/*, const int& port*/); // USE \\ in string for \.
+	bool verifyPortName(const std::string& portName, const int& switchNumber, const int& port);
+
+	void checkPortInFile(const std::string& fileName, // USE \\ in string for \.
+						const int& switchNumber,
+						const int& port); 
 
 private:
 };

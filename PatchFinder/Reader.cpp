@@ -13,7 +13,49 @@ Reader::~Reader()
 	//
 }
 
-void Reader::checkPortInFile(const std::string& fileName/*, const int& port*/)
+bool Reader::verifyPortName(const string& portName, const int& switchNumber, const int& port)
+{
+	// Check if it's the blank 2nd line in the log.
+	if (portName.length() == 0)
+	{
+		return false;
+	}
+
+	// Convert 3rd character to int and check == switchNumber (always the 3rd character)
+	if (portName[2] - '0' == switchNumber) 
+	{
+		// If port is < 10, check the last character of portName is the port.
+		if (port < 10)
+		{
+			if (portName.substr(portName.length() - 2) == "/" + to_string(port))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		// If port is >= 10, check the last 2 characters of portName are the port.
+		else
+		{
+			if (portName.substr(portName.length() - 3) == "/" + to_string(port))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Reader::checkPortInFile(const std::string& fileName, const int& switchNumber, const int& port)
 {
 	// Returns true if fileName has port active but not connected.
 	string line;		// Used to read.
@@ -32,17 +74,24 @@ void Reader::checkPortInFile(const std::string& fileName/*, const int& port*/)
 		// Read each line.
 		while (getline(file, line))
 		{
-			// Print line on console.
-			cout << line << "\t";
+			// Put first word of line in portName variable.
+			istringstream lineStream(line);
+			string portName;
+			lineStream >> portName;
 
-			// Look for "notconnect" in the line.
-			size_t found = line.find("notconnect");
-			if (found != string::npos)
+			// Check if portName is the port we are searching.
+			if (verifyPortName(portName, switchNumber, port))
 			{
-				// If notconnect, print "available".
-				cout << "-- AVAILABLE --";
+				cout << portName << "\t";
+				// Look for "notconnect" in the line.
+				size_t found = line.find("notconnect");
+				if (found != string::npos)
+				{
+					// If notconnect, print "available".
+					cout << "-- AVAILABLE --";
+				}
+				cout << endl;
 			}
-			cout << endl;
 		}
 	}
 

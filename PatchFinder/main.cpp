@@ -12,6 +12,12 @@ void getSwitchName(string& name)
 	cin >> name;
 }
 
+void getSwitchNumber(int& number)
+{
+	cout << "\nEnter switch number: ";
+	cin >> number;
+}
+
 void getSwitchPort(int& port)
 {
 	cout << "\nEnter port to verify: ";
@@ -28,12 +34,16 @@ int main()
 	string name;
 	getSwitchName(name);
 
+	// Get switch number.
+	int number;
+	getSwitchNumber(number);
+
 	// Get switch port.
 	int port;
 	getSwitchPort(port);
 
 	// Create switch object.
-	Switch PmsSwitch(name, port);
+	Switch PmsSwitch(name, number, port);
 	
 	// test log file names generation.
 	cout << "\n\nFiles to read:\n";
@@ -44,6 +54,6 @@ int main()
 
 	// test Reader class with given switch log file.
 	Reader reader;
-	reader.checkPortInFile("E:\\Downloads\\RM-SW-52-2016-06-09\\RM-SW-52\\RM-SW-52.sh_int_stat.20130123.txt");
+	reader.checkPortInFile("E:\\Downloads\\RM-SW-52-2016-06-09\\RM-SW-52\\RM-SW-52.sh_int_stat.20130123.txt", number, port);
 
 }
