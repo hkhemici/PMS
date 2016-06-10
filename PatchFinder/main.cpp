@@ -97,4 +97,7 @@ int main()
 		cout << "\nThe port CANNOT be used to patch a user.\n" << endl;
 	}
 
+	// Prevent immediate closing.
+	system("pause");
+
 }
