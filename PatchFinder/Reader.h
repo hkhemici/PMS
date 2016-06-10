@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream> // to test.
 #include <sstream>
+#include <exception>
 
 class Reader
 {

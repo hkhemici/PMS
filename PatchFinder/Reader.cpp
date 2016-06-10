@@ -65,7 +65,7 @@ bool Reader::checkPortInFile(const std::string& fileName, const int& switchNumbe
 	// Check failure in opening file (ex.: files are not generated on weekends).
 	if (file.fail())
 	{
-		cout << "File does not exist.\n";
+		throw exception("File does not exist");
 	}
 	else
 	{

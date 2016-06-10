@@ -50,7 +50,7 @@ int main()
 	vector<string> localNames;
 	for (int i = 0; i < 90; i++)
 	{
-		localNames.push_back("E:\\Downloads\\RM-SW-52-2016-06-09\\RM-SW-52\\" + PmsSwitch.getLogs().getList()[i]);
+		localNames.push_back("C:\\Users\\hkhemici\\Documents\\RM-SW-52\\" + PmsSwitch.getLogs().getList()[i]);
 	}
 	// _______________________________________________________
 
@@ -58,15 +58,24 @@ int main()
 	// test Reader class with given switch log file.
 	Reader reader;
 
+
 	for (int i = 0; i < 90; i++)
 	{
-		if (reader.checkPortInFile(localNames[i], number, port))
+		try
 		{
-			cout << "Port " << port << " is AVAILABLE on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
+			if (reader.checkPortInFile(localNames[i], number, port))
+			{
+				cout << "Port " << port << " is available on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
+			}
+			else
+			{
+				cout << "Port " << port << " is -- NOT AVAILABLE -- on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
+			}
 		}
-		else
+		catch (const std::exception& e)
 		{
-			cout << "Port " << port << " is NOT AVAILABLE on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
+			cout << e.what() << " on " << PmsSwitch.getLogs().getDates().getYYYYMMDD()[i] << endl;
 		}
+		
 	}
 }
