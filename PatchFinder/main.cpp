@@ -21,8 +21,8 @@ void getSwitchPort(int& port)
 int main()
 {
 	// Initiate variables
-	ifstream logFile;				// Read-only.
-	bool portUsable = false;		//
+	bool portUsable = false;
+	cout << "test start.\n\n";
 
 	// Get switch name.
 	string name;
@@ -35,11 +35,15 @@ int main()
 	// Create switch object.
 	Switch PmsSwitch(name, port);
 	
-	// test
+	// test log file names generation.
 	cout << "\n\nFiles to read:\n";
 	for (int i = 0; i < 90; i++)
 	{
 		cout << PmsSwitch.getLogs().getList()[i] << endl;
 	}
+
+	// test Reader class with given switch log file.
+	Reader reader;
+	reader.checkPortInFile("E:\\Downloads\\RM-SW-52-2016-06-09\\RM-SW-52\\RM-SW-52.sh_int_stat.20130123.txt");
 
 }

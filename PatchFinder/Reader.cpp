@@ -13,22 +13,41 @@ Reader::~Reader()
 	//
 }
 
-bool Reader::checkPortInFile(const std::string& fileName, const int& port)
+void Reader::checkPortInFile(const std::string& fileName/*, const int& port*/)
 {
 	// Returns true if fileName has port active but not connected.
-	string word;		// Used to read.
+	string line;		// Used to read.
 	ifstream file;
 	file.open(fileName);
-	while (file >> word)
+
+	// Check failure in opening file (ex.: files are not generated on weekends).
+	if (file.fail())
 	{
-		if (word == "Type")
+		cout << "\nFILE DOES NOT EXIST.\n";
+	}
+	else
+	{
+		cout << "\n" << fileName << " opened successfully.\n";
+
+		// Read each line.
+		while (getline(file, line))
 		{
-			break;
+			// Print line on console.
+			cout << line << "\t";
+
+			// Look for "notconnect" in the line.
+			size_t found = line.find("notconnect");
+			if (found != string::npos)
+			{
+				// If notconnect, print "available".
+				cout << "-- AVAILABLE --";
+			}
+			cout << endl;
 		}
 	}
-	file >> word;
-	//
+
+
 	file.close();
-	return true; // TODO: return
+	// TODO: return
 }
 

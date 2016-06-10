@@ -4,6 +4,7 @@
 
 #include <string>
 #include <fstream>
+#include <iostream> // to test.
 
 class Reader
 {
@@ -11,7 +12,7 @@ public:
 	Reader();
 	~Reader();
 
-	bool checkPortInFile(const std::string& fileName, const int& port);
+	void checkPortInFile(const std::string& fileName/*, const int& port*/); // USE \\ in string for \.
 
 private:
 };
