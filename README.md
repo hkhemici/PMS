@@ -4,6 +4,8 @@
 A simple program to learn whether the port of a Pharmascience switch can be used to patch a user.
 An active port that was unused for 3 months is considered fit to attribute to a new user.
 
+Latest release: v1.0.1
+
 HOW TO USE:
 
 To run this program, you need:
