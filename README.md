@@ -7,9 +7,9 @@ An active port that was unused for 3 months is considered fit to attribute to a 
 HOW TO USE:
 
 To run this program, you need:
-1 - The NAME of a SWITCH;
-2 - Its NUMBER in the STACK;
-3 - The NUMBER of a PORT that is currently free on the switch;
+- The NAME of a SWITCH;
+- Its NUMBER in the STACK;
+- The NUMBER of a PORT that is currently free on the switch;
 
 You can gather the information above from a trip to a patch room or from browsing the switch log files available at:
 \\MONITOR02-RM\Open_Switch_Ports$
