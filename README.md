@@ -14,7 +14,7 @@ To run this program, you need:
 - The NUMBER of a PORT that is currently free on the switch;
 
 You can gather the information above from a trip to a patch room or from browsing the switch log files available at:
-\\MONITOR02-RM\Open_Switch_Ports$
+\\\MONITOR02-RM\Open_Switch_Ports$
 
 PatchFinder (a.k.a Patch King 3000) will then parse the relevant log files to tell you whether you can use the port you specified.
 
