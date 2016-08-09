@@ -6,7 +6,7 @@ An active port that has not been used for 3 months is considered fit to attribut
 
 Latest release: v1.0.1
 
-###HOW TO USE IT:
+##HOW TO USE IT:
 
 To run this program, you need:
 - The NAME of a SWITCH (case-sensitive!);
