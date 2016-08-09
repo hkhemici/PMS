@@ -95,9 +95,6 @@ bool Reader::checkPortInFile(const std::string& fileName, const int& switchNumbe
 			}
 		}
 	}
-
-
 	file.close();
-	// TODO: return
 }
 

@@ -24,7 +24,7 @@ Dates::Dates()
 
 Dates::~Dates()
 {
-	//delete[] YYYYMMDD_; // CAUSES BUG
+	//
 }
 
 int* Dates::getYYYYMMDD()

@@ -8,7 +8,7 @@ using namespace std;
 
 void getSwitchName(string& name)
 {
-	cout << "\nEnter switch name: ";
+	cout << "\nEnter switch name (case-sensitive): ";
 	cin >> name;
 }
 
@@ -36,7 +36,6 @@ bool askTryAgain()
 
 int main()
 {
-
 	// Initiate variables
 	bool tryAgain = true;
 	cout << "\n////////////////////////////////////////////////////" <<
@@ -68,17 +67,16 @@ int main()
 		Switch PmsSwitch(name, number, port);
 
 		// Build localNames.
+		// (Building the vector at every port entered is not optimal for performance but has the benefit of allowing updated logs
+		// if the user leaves the program open and a new log file is generated).
 		vector<string> localNames;
 		for (int i = 0; i < 90; i++)
 		{
-			//localNames.push_back("C:\\Users\\hkhemici\\Documents\\RM-SW-52\\" + PmsSwitch.getLogs().getList()[i]);
 			localNames.push_back("\\\\MONITOR02-RM\\Open_Switch_Ports$\\" + PmsSwitch.getName() + "\\" + PmsSwitch.getLogs().getList()[i]);
 		}
 
 		// Read files.
 		Reader reader;
-
-
 		for (int i = 0; i < 90; i++)
 		{
 			try
@@ -110,6 +108,7 @@ int main()
 			cout << "\nThe port CANNOT be used to patch a user.\n" << endl;
 		}
 
+		// Ask if the user wants to try with a different port.
 		tryAgain = askTryAgain();
 	}
 }
