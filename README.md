@@ -1,19 +1,19 @@
-#Pharmascience
+##Pharmascience
 #PatchFinder.exe
 
 A simple program to learn whether the port of a Pharmascience switch can be used to patch a user.
-An active port that was unused for 3 months is considered fit to attribute to a new user.
+An active port that has not been used for 3 months is considered fit to attribute to a new user.
 
 Latest release: v1.0.1
 
-HOW TO USE:
+###HOW TO USE IT:
 
 To run this program, you need:
-- The NAME of a SWITCH;
+- The NAME of a SWITCH (case-sensitive!);
 - Its NUMBER in the STACK;
 - The NUMBER of a PORT that is currently free on the switch;
 
-You can gather the information above from a trip to a patch room or from browsing the switch log files available at:
+You can gather the information above from a trip to a patch room, but I recommend double-checking the port/stack notation in the log files stored in:
 \\\MONITOR02-RM\Open_Switch_Ports$
 
 PatchFinder (a.k.a Patch King 3000) will then parse the relevant log files to tell you whether you can use the port you specified.
