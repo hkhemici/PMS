@@ -1,5 +1,5 @@
 ##Pharmascience
-#PatchFinder.exe
+#PatchFinder
 
 A simple program to learn whether the port of a Pharmascience switch can be used to patch a user (on any site!).
 An active port that has not been used for 3 months is considered fit to attribute to a new user.
